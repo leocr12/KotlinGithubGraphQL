@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.leonardoallen.strafe.EntryDetailQuery
 import com.example.leonardoallen.strafe.R
@@ -57,6 +58,9 @@ class EntryDetailActivity : AppCompatActivity(), EntryDetailContract.View {
             name.text = entry.repository().full_name()
             description.text = entry.repository().description()
             postedBy.text = resources.getString(R.string.posted_by, entry.postedBy().login())
+        } else {
+            Toast.makeText(this, "No entry found", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 
